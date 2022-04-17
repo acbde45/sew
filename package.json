@@ -1,5 +1,5 @@
 {
-  "name": "sew",
+  "name": "sew-ui",
   "private": true,
   "version": "0.0.0-beta.1",
   "description": "这是一个究极缝合项目",
@@ -28,6 +28,7 @@
     "vooks": "^0.2.12"
   },
   "devDependencies": {
+    "naive-ui": "^2.28.0",
     "vue": "^3.2.33"
   }
 }
