@@ -1,0 +1,33 @@
+{
+  "name": "sew",
+  "private": true,
+  "version": "0.0.0-beta.1",
+  "description": "这是一个究极缝合项目",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development vite",
+    "build": "cross-env NODE_ENV=production vite build",
+    "preview": "cross-env NODE_ENV=production vite preview",
+    "format": "pnpm run format:code && pnpm run format:md",
+    "format:code": "prettier --write \"(src|demo|plugins)/**/*.(vue|js)\"",
+    "format:md": "prettier --write --parser markdown --prose-wrap never \"(src|demo)/**/*.md\""
+  },
+  "dependencies": {
+    "@babel/core": "^7.17.9",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@vitejs/plugin-vue": "^2.3.1",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.14.36",
+    "fs-extra": "^10.0.1",
+    "highlight.js": "^11.5.1",
+    "lodash": "^4.17.21",
+    "marked": "^4.0.14",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "vite": "^2.9.5",
+    "vooks": "^0.2.12"
+  },
+  "devDependencies": {
+    "vue": "^3.2.33"
+  }
+}
