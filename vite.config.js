@@ -13,6 +13,9 @@ module.exports = {
     'process.env.TUSIMPLE': !!process.env.TUSIMPLE,
     __DEV__: process.env.NODE_ENV !== 'production',
   },
+  optimizeDeps: {
+    exclude: ['__INDEX__']
+  },
   build: {
     outDir: 'site',
     rollupOptions: {

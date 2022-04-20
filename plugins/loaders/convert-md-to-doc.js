@@ -127,31 +127,23 @@ function genScript(demoInfos, components = [], url, forceShowAnchor) {
     .join(',\n');
   const script = `<script>
 ${importStmts}
-import { computed } from 'vue'
-import { useMemo } from 'vooks'
-// import { useDisplayMode } from '/demo/store'
-// import { useIsMobile } from '/demo/utils/composables'
+import { computed } from 'vue';
+import { useMemo } from 'vooks';
+import { useDisplayMode } from '/demo/store';
 
 export default {
   components: {
     ${componentStmts}
   },
   setup () {
-    // const isMobileRef = useIsMobile()
     const showAnchorRef = useMemo(() => {
-      // if (isMobileRef.value) return false
       return ${showAnchor}
     })
-    // const useSmallPaddingRef = isMobileRef
     const useSmallPaddingRef = false
     return {
       showAnchor: showAnchorRef,
-      // displayMode: useDisplayMode(),
-      wrapperStyle: computed(() => {
-        return !useSmallPaddingRef.value
-          ? 'display: flex; flex-wrap: nowrap; padding: 32px 24px 56px 56px;'
-          : 'padding: 16px 16px 24px 16px;'
-      }),
+      displayMode: useDisplayMode(),
+      wrapperStyle: 'display: flex; flex-wrap: nowrap; padding: 32px 24px 56px 56px;',
       contentStyle: computed(() => {
         return showAnchorRef.value
           ? 'width: calc(100% - 164px); margin-right: 36px;'
@@ -160,7 +152,7 @@ export default {
       url: ${JSON.stringify(url)}
     }
   }
-}
+};
 </script>`;
   return script;
 }
@@ -200,8 +192,8 @@ async function convertMd2ComponentDocumentation(
     (token) => token.type === 'heading' && token.depth === 1
   );
   if (titleIndex > -1) {
-    const titleText = JSON.stringify(tokens[titleIndex].text);
-    const btnTemplate = `<edit-on-github-header relative-url="${url}" text=${titleText}></edit-on-github-header>`;
+    const titleText = tokens[titleIndex].text;
+    const btnTemplate = `<n-h1>${titleText}</n-h1>`;
     tokens.splice(titleIndex, 1, {
       type: 'html',
       pre: false,

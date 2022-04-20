@@ -1,5 +1,5 @@
 const createVuePlugin = require('@vitejs/plugin-vue');
-const demoIndexTransFormPlugin = require('./vite-plugin-index-transform');
+const siteIndexTransFormPlugin = require('./vite-plugin-index-transform');
 const getTransformedVueSrc = require('./utils/get-demo-by-path');
 
 const fileRegex = /\.(md|vue)$/;
@@ -28,7 +28,7 @@ const createDemoPlugin = () => {
     }
   };
 
-  return [naiveDemoVitePlugin, demoIndexTransFormPlugin, vuePlugin];
+  return [siteIndexTransFormPlugin, naiveDemoVitePlugin, vuePlugin];
 };
 
 module.exports = createDemoPlugin;

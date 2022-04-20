@@ -13,22 +13,26 @@
     "format:md": "prettier --write --parser markdown --prose-wrap never \"(src|demo)/**/*.md\""
   },
   "dependencies": {
+    "@vicons/ionicons5": "^0.12.0",
+    "codesandbox": "^2.2.3",
+    "highlight.js": "^11.5.1",
+    "lodash": "^4.17.21",
+    "naive-ui": "^2.28.0",
+    "vfonts": "^0.0.3",
+    "vooks": "^0.2.12",
+    "vue": "^3.2.33",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
     "@babel/core": "^7.17.9",
     "@rollup/plugin-babel": "^5.3.1",
     "@vitejs/plugin-vue": "^2.3.1",
     "cross-env": "^7.0.3",
     "esbuild": "^0.14.36",
     "fs-extra": "^10.0.1",
-    "highlight.js": "^11.5.1",
-    "lodash": "^4.17.21",
     "marked": "^4.0.14",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "vite": "^2.9.5",
-    "vooks": "^0.2.12"
-  },
-  "devDependencies": {
-    "naive-ui": "^2.28.0",
-    "vue": "^3.2.33"
+    "vite": "^2.9.5"
   }
 }
