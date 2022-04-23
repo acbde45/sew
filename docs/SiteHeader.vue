@@ -2,7 +2,7 @@
   <n-layout-header bordered class="nav" :style="style">
     <n-text tag="div" class="ui-logo" :depth="1">
       <img src="./assets/images/naivelogo.svg" />
-      <span>Naive UI</span>
+      <span>Vue Admin</span>
     </n-text>
     <div style="display: flex; align-items: center">
       <div class="nav-menu">
@@ -42,7 +42,6 @@ export default defineComponent({
   name: 'SiteHeader',
   setup() {
     const route = useRoute();
-    const router = useRouter();
     // menu
     const menuOptionsRef = computed(() => {
       return [

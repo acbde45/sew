@@ -3,7 +3,7 @@ import { getParameters } from 'codesandbox/lib/api/define';
 const indexHtml = `<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Naive UI Demo</title>
+    <title>Vue Admin Demo</title>
     <style>
       body {
         padding: 24px;

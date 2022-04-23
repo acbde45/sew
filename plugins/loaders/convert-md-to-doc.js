@@ -129,7 +129,7 @@ function genScript(demoInfos, components = [], url, forceShowAnchor) {
 ${importStmts}
 import { computed } from 'vue';
 import { useMemo } from 'vooks';
-import { useDisplayMode } from '/demo/store';
+import { useDisplayMode } from '/docs/store';
 
 export default {
   components: {

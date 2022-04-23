@@ -5,11 +5,11 @@ const transformIndexHtml = (code) => {
   //   default:
   //     return code.replace(/__INDEX__/, '/demo/index.dev.js');
   // }
-  return code.replace(/__INDEX__/, '/demo/index.js');
+  return code.replace(/__INDEX__/, '/docs/index.js');
 };
 
-const demoIndexTransFormPlugin = {
-  name: 'demo-transform',
+const indexTransformPlugin = {
+  name: 'index-transform',
   enforce: 'pre',
   // vite build is production will not invoke `transformIndexHtml`
   transform(code, id) {
@@ -20,4 +20,4 @@ const demoIndexTransFormPlugin = {
   transformIndexHtml
 };
 
-module.exports = demoIndexTransFormPlugin;
+module.exports = indexTransformPlugin;

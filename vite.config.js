@@ -1,16 +1,15 @@
 const path = require('path');
 const { babel } = require('@rollup/plugin-babel');
-const createDemoPlugin = require('./plugins/vite-plugin-demo');
+const webDocPlugin = require('./plugins/vite-plugin-web-doc');
 
 /**
  * @type {import('vite').UserConfig}
  */
 module.exports = {
   root: __dirname,
-  plugins: createDemoPlugin(),
+  plugins: webDocPlugin(),
   define: {
     'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
-    'process.env.TUSIMPLE': !!process.env.TUSIMPLE,
     __DEV__: process.env.NODE_ENV !== 'production',
   },
   optimizeDeps: {

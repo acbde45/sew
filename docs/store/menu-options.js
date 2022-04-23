@@ -61,8 +61,8 @@ export function createDocumentationMenuOptions({ mode }) {
       type: 'group',
       children: [
         {
-          en: 'Naive UI',
-          zh: 'Naive UI',
+          en: 'Vue Admin',
+          zh: 'Vue Admin',
           path: '/introduction'
         }
       ]
