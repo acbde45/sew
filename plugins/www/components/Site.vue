@@ -9,7 +9,7 @@
 import { onMounted, defineComponent } from 'vue';
 import { useLoadingBar } from 'naive-ui';
 import SiteHeader from './SiteHeader.vue';
-import { loadingBarApiRef } from './routes/router';
+import { loadingBarApiRef } from '../routes/router';
 
 export default defineComponent({
   name: 'Site',

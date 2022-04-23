@@ -2,14 +2,14 @@ export const docRoutes = [
   {
     name: 'introduction',
     path: 'introduction',
-    component: () => import('../pages/docs/introduction/index.md')
+    component: () => import('../../../docs/docs/introduction/index.md')
   }
 ];
 
 export const componentRoutes = [
   {
     path: 'button',
-    component: () => import('../../src/button/demos/index.demo-entry.md')
+    component: () => import('../../../docs/components/button/index.demo-entry.md')
   }
 ];
 
@@ -24,13 +24,13 @@ export const routes = [
   {
     name: 'docs',
     path: '/docs',
-    component: () => import('../pages/Layout.vue'),
+    component: () => import('../components/Layout.vue'),
     children: docRoutes
   },
   {
     name: 'components',
     path: '/components',
-    component: () => import('../pages/Layout.vue'),
+    component: () => import('../components/Layout.vue'),
     children: componentRoutes
   },
   {

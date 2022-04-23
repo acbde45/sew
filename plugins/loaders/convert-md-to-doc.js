@@ -3,12 +3,12 @@ const fse = require('fs-extra');
 const { marked } = require('marked');
 const camelCase = require('lodash/camelCase');
 const createRenderer = require('./md-renderer');
-const projectPath = require('./project-path');
+
 const mdRenderer = createRenderer();
 
 async function resolveDemoTitle(fileName, demoEntryPath) {
   const demoStr = await fse.readFile(
-    path.resolve(projectPath, demoEntryPath, '..', fileName),
+    path.resolve(process.cwd(), demoEntryPath, '..', fileName),
     'utf-8'
   );
   return demoStr.match(/# ([^\n]+)/)[1];
@@ -125,11 +125,12 @@ function genScript(demoInfos, components = [], url, forceShowAnchor) {
     .map(({ variable }) => variable)
     .concat(components.map(({ ids }) => ids).flat())
     .join(',\n');
+  const storePath = path.resolve(__dirname, '../www/store');
   const script = `<script>
 ${importStmts}
 import { computed } from 'vue';
 import { useMemo } from 'vooks';
-import { useDisplayMode } from '/docs/store';
+import { useDisplayMode } from '${storePath}';
 
 export default {
   components: {

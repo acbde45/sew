@@ -32,12 +32,6 @@ const appendCounts = (item) => {
   }
 };
 
-// const createDebugDemos = (item, mode) => {
-//   if (__DEV__ && mode === 'debug') {
-//     return [item]
-//   } else return []
-// }
-
 function createItems(prefix, items) {
   return items.map((rawItem) => {
     const item = {

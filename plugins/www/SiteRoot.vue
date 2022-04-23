@@ -16,7 +16,7 @@
 <script>
 import { defineComponent } from 'vue';
 import { siteSetup } from './store';
-import Site from './Site.vue';
+import Site from './components/Site.vue';
 
 export default defineComponent({
   name: 'SiteProvider',

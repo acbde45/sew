@@ -1,7 +1,7 @@
 <template>
   <n-layout-header bordered class="nav" :style="style">
     <n-text tag="div" class="ui-logo" :depth="1">
-      <img src="./assets/images/naivelogo.svg" />
+      <img src="../assets/images/naivelogo.svg" />
       <span>Vue Admin</span>
     </n-text>
     <div style="display: flex; align-items: center">
@@ -33,10 +33,10 @@
 
 <script>
 import { defineComponent, computed } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { version } from 'naive-ui';
-import { useDisplayMode } from './store';
-import { renderMenuLabel } from './store/menu-options';
+import { useDisplayMode } from '../store';
+import { renderMenuLabel } from '../store/menu-options';
 
 export default defineComponent({
   name: 'SiteHeader',

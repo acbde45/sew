@@ -1,4 +1,5 @@
 const tsToJs = require('./tsToJs');
+
 module.exports = function handleMergeCode({ parts, mergedParts, isVue }) {
   if (isVue && parts.language === 'ts') {
     // ts and js
