@@ -1,11 +1,11 @@
 import { nextTick } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 export const loadingBarApiRef = {};
 
 export default function createDemoRouter(app, routes) {
   const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory('/web-doc.html/'),
     routes
   });
 

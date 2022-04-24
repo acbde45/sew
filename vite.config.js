@@ -5,7 +5,13 @@ const webDocPlugin = require('./plugins/vite-plugin-web-doc');
  */
 module.exports = {
   root: __dirname,
-  plugins: [webDocPlugin()],
+  plugins: [
+    webDocPlugin({
+      docs: [
+        
+      ]
+    })
+  ],
   define: {
     'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
     __DEV__: process.env.NODE_ENV !== 'production'

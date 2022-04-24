@@ -35,11 +35,16 @@ function indexTransformPlugin() {
     configureServer(server) {
       return () => {
         server.middlewares.use('/', async (req, res, next) => {
-          const url = decodeURI(generateUrl(req.url));
           // if request is not html , directly return next()
-          if (!~url.search('web-doc.html')) {
+          if (!~req.originalUrl.search('web-doc.html')) {
             return next();
           }
+          if (!req.originalUrl.endsWith('web-doc.html')) {
+            res.writeHead(301, {'Location': '/web-doc.html'});
+            res.end();
+            return next();
+          }
+          const url = decodeURI(generateUrl(req.url));
           const htmlCode = (await this.load(url)) ?? '';
           // @ts-ignore
           res.write(await server.transformIndexHtml(url, htmlCode));
@@ -48,14 +53,14 @@ function indexTransformPlugin() {
       };
     },
     async load(id) {
-      if (~id.search('web-doc.html')) {
+      if (id.endsWith('web-doc.html')) {
         const html = await fs.readFileSync(path.join(__dirname, 'www', id), { encoding: 'utf8' });
         return html;
       }
       return null;
     },
     transform(code, id) {
-      if (~id.search('web-doc.html')) {
+      if (id.endsWith('web-doc.html')) {
         return { code: transformIndexHtml(code), map: null };
       }
     },
