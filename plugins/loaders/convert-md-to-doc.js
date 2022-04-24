@@ -1,6 +1,7 @@
 const path = require('path');
 const fse = require('fs-extra');
 const { marked } = require('marked');
+const slash = require('slash2');
 const camelCase = require('lodash/camelCase');
 const createRenderer = require('./md-renderer');
 
@@ -125,12 +126,12 @@ function genScript(demoInfos, components = [], url, forceShowAnchor) {
     .map(({ variable }) => variable)
     .concat(components.map(({ ids }) => ids).flat())
     .join(',\n');
-  const storePath = path.resolve(__dirname, '../www/store');
+  const storePath = path.relative(process.cwd(), path.resolve(__dirname, '../www/store/index.js'));
   const script = `<script>
 ${importStmts}
 import { computed } from 'vue';
 import { useMemo } from 'vooks';
-import { useDisplayMode } from '${storePath}';
+import { useDisplayMode } from '/${slash(storePath)}';
 
 export default {
   components: {

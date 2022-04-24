@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const transformIndexHtml = (code) => {
-  return code.replace(/__VUE-WEB-DOC-INDEX__/, path.join(__dirname, './www/index.js'));
+  const htmlPath = path.resolve(__dirname, './www/index.js');
+  return code.replace(/__VUE-WEB-DOC-INDEX__/, path.relative(process.cwd(), htmlPath));
 };
 
 function generateUrl(url) {
