@@ -25,8 +25,7 @@ const appendCounts = (item) => {
     item.children.forEach(appendCounts);
     item.count = item.children.reduce((sum, item) => sum + item.count, 0);
     if (item.type === 'group') {
-      item.en += ` (${item.count})`;
-      item.zh += ` (${item.count})`;
+      item.label += ` (${item.count})`;
     }
     return item;
   }
@@ -36,8 +35,6 @@ function createItems(prefix, items) {
   return items.map((rawItem) => {
     const item = {
       ...rawItem,
-      key: rawItem.en,
-      label: rawItem.zh,
       path: rawItem.path ? prefix + rawItem.path : undefined
     };
     if (rawItem.children) {
@@ -47,37 +44,22 @@ function createItems(prefix, items) {
   });
 }
 
-export function createDocumentationMenuOptions({ mode }) {
-  return createItems('/docs', [
-    {
-      en: 'Introduction',
-      zh: '介绍',
-      type: 'group',
-      children: [
-        {
-          en: 'Vue Admin',
-          zh: 'Vue Admin',
-          path: '/introduction'
-        }
-      ]
-    }
-  ]);
+export function createMenuOptions({ mode }) {
+  const menuOptions = <!--MENU_OPTIONS_SLOT-->; 
+
+  let result = {};
+  Object.keys(menuOptions).forEach(key => {
+    result[key] = createItems('/' + key, menuOptions[key].map(option => {
+      if (option.type === 'group' && option.name === 'components') {
+        return appendCounts(option);
+      }
+      return option;
+    }));
+  });
+  return result;
 }
 
-export function createComponentMenuOptions({ mode }) {
-  return createItems('/components', [
-    appendCounts({
-      zh: '通用组件',
-      en: 'Common Components',
-      type: 'group',
-      children: [
-        {
-          en: 'Button',
-          zh: '按钮',
-          enSuffix: true,
-          path: '/button'
-        }
-      ]
-    })
-  ]);
+export function createHeaderMenuOptions({ mode }) {
+  const menuOptions = <!--HEADER_MENU_OPTIONS_SLOT-->;
+  return menuOptions;
 }

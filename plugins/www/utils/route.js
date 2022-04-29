@@ -5,7 +5,7 @@ export function findMenuValue(options, path) {
       if (value) return value;
     }
     if (option.path === path) {
-      return option.key;
+      return option.name;
     }
   }
   return undefined;

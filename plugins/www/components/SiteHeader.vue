@@ -35,7 +35,7 @@
 import { defineComponent, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { version } from 'naive-ui';
-import { useDisplayMode } from '../store';
+import { useDisplayMode, useHeaderMenuOptions } from '../store';
 import { renderMenuLabel } from '../store/menu-options';
 
 export default defineComponent({
@@ -43,25 +43,9 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     // menu
-    const menuOptionsRef = computed(() => {
-      return [
-        {
-          key: 'doc',
-          label: '文档',
-          path: '/docs/introduction'
-        },
-        {
-          key: 'component',
-          label: '组件',
-          path: '/components/button'
-        }
-      ];
-    });
+    const menuOptionsRef = useHeaderMenuOptions();
     const menuValueRef = computed(() => {
-      if (/\/docs\//.test(route.path)) return 'doc';
-      if (/\/components\//.test(route.path)) return 'component';
-      else if (route.name === 'home') return 'home';
-      return null;
+      return route.path.split('/')[1];
     });
 
     // display mode

@@ -1,17 +1,37 @@
-export const docRoutes = [
-  {
-    name: 'introduction',
-    path: 'introduction',
-    component: () => import('../../../docs/docs/introduction/index.md')
-  }
-];
+import { useMenuOptions } from '../store';
 
-export const componentRoutes = [
-  {
-    path: 'button',
-    component: () => import('../../../docs/components/button/index.demo-entry.md')
-  }
-];
+function parseOptionsToRoutes() {
+  const options = useMenuOptions().value;
+
+  const routes = Object.entries(options).map(([docName, docOptions]) => {
+    const children = [];
+    docOptions.forEach((option) => {
+      if (option.type === 'group') {
+        option.children.forEach((item) => {
+          children.push({
+            name: item.name,
+            path: item.name,
+            component: () => import(/* @vite-ignore */ item.filerRlativePath)
+          });
+        });
+      } else {
+        children.push({
+          name: option.name,
+          path: option.name,
+          component: () => import(/* @vite-ignore */ option.filerRlativePath)
+        });
+      }
+    });
+    return {
+      name: docName,
+      path: '/' + docName,
+      component: () => import('../components/Layout.vue'),
+      children
+    };
+  });
+
+  return routes;
+}
 
 export const routes = [
   {
@@ -21,18 +41,7 @@ export const routes = [
       name: 'introduction'
     }
   },
-  {
-    name: 'docs',
-    path: '/docs',
-    component: () => import('../components/Layout.vue'),
-    children: docRoutes
-  },
-  {
-    name: 'components',
-    path: '/components',
-    component: () => import('../components/Layout.vue'),
-    children: componentRoutes
-  },
+  ...parseOptionsToRoutes(),
   {
     name: 'not-found',
     path: '/:pathMatch(.*)*',

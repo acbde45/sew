@@ -35,39 +35,28 @@
   </n-layout>
 </template>
 
-<script lang="ts">
-// Frame component for components & docs page
+<script>
 import { defineComponent, computed, watch, toRef, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { findMenuValue } from '../utils/route';
-import { useDocOptions, useComponentOptions } from '../store';
+import { useMenuOptions } from '../store';
 import { renderMenuLabel } from '../store/menu-options';
-import { useMemo } from 'vooks';
 
 export default defineComponent({
   setup() {
     const route = useRoute();
     const layoutInstRef = ref(null);
-    const docOptionsRef = useDocOptions();
-    const componentOptionsRef = useComponentOptions();
+    const enrtyRef = ref(route.path.split('/')[1]);
+    const options = useMenuOptions();
     const optionsRef = computed(() =>
-      route.path.includes('/docs/')
-        ? docOptionsRef.value
-        : componentOptionsRef.value
+      options.value[enrtyRef.value] || []
     );
 
     const menuValueRef = computed(() => {
       return findMenuValue(optionsRef.value, route.path);
     });
-    watch(toRef(route, 'path'), (value, oldValue) => {
-      const langAndThemeReg = /\/(zh-CN|en-US)\/(light|dark|os-theme)/g;
-      // only theme & lang change do not restore the scroll status
-      if (
-        value.replace(langAndThemeReg, '') !==
-        oldValue.replace(langAndThemeReg, '')
-      ) {
-        layoutInstRef.value.scrollTo(0, 0);
-      }
+    watch(toRef(route, 'path'), (value) => {
+      enrtyRef.value = value.split('/')[1];
     });
 
     return {

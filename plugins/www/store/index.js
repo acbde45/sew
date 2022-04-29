@@ -1,9 +1,6 @@
 import { computed, ref } from 'vue';
 import hljs from './hljs';
-import {
-  createDocumentationMenuOptions,
-  createComponentMenuOptions
-} from './menu-options';
+import { createMenuOptions, createHeaderMenuOptions } from './menu-options';
 
 // display mode
 const _displayModeRef = ref(window.localStorage.getItem('mode') ?? 'debug');
@@ -22,17 +19,17 @@ export function useDisplayMode() {
 }
 
 // options
-const docOptionsRef = computed(() =>
-  createDocumentationMenuOptions({
+const menuOptionsRef = computed(() =>
+  createMenuOptions({
     mode: displayModeRef.value
   })
 );
-const componentOptionsRef = computed(() =>
-  createComponentMenuOptions({
+const headerMenuOptionsRef = computed(() =>
+  createHeaderMenuOptions({
     mode: displayModeRef.value
   })
 );
-const flattenedDocOptionsRef = computed(() => {
+const flattenedMenuOptionsRef = computed(() => {
   const flattenedItems = [];
   const traverse = (items) => {
     if (!items) return;
@@ -41,21 +38,23 @@ const flattenedDocOptionsRef = computed(() => {
       else flattenedItems.push(item);
     });
   };
-  traverse(docOptionsRef.value);
-  traverse(componentOptionsRef.value);
+  Object.values(menuOptions).forEach((options) => {
+    traverse(options);
+  });
+
   return flattenedItems;
 });
 
-export function useDocOptions() {
-  return docOptionsRef;
+export function useMenuOptions() {
+  return menuOptionsRef;
 }
 
-export function useComponentOptions() {
-  return componentOptionsRef;
+export function useHeaderMenuOptions() {
+  return headerMenuOptionsRef;
 }
 
 export function useFlattenedDocOptions() {
-  return flattenedDocOptionsRef;
+  return flattenedMenuOptionsRef;
 }
 
 export function siteSetup() {
