@@ -9,6 +9,8 @@ const app = createApp(SiteRoot);
 
 const router = createDemoRouter(app, routes);
 
+console.log(naive);
+
 app.use(router);
 app.use(naive);
 installDemoComponents(app);

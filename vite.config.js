@@ -41,6 +41,18 @@ module.exports = {
                   path: '/button'
                 }
               ]
+            },
+            {
+              name: 'my-components',
+              label: '我的组件',
+              type: 'group',
+              children: [
+                {
+                  name: 'schema-form',
+                  label: 'schema表单',
+                  path: '/schema-form'
+                }
+              ]
             }
           ]
         }
