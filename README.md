@@ -1,6 +1,66 @@
-# Sew UI
+# vite-plugin-vue-web-docs
 
-# 说明
+vue 可以使用的组件文档插件。
 
-这是一个究极缝合项目。
-由于本人的水平有限，所以会借鉴一些开源项目的想法和代码，但是并不会用于商业用途。
+# Install
+
+```bash
+npm install vue-plugin-vue-web-docs --save-dev
+```
+
+# Usage
+
+```javascript
+webDocPlugin({
+  docs: {
+    docs: {
+      title: '文档',
+      link: '/docs/introduction',
+      menuOptions: [
+        {
+          name: 'introduction',
+          label: '介绍',
+          type: 'group',
+          children: [
+            {
+              name: 'introduction',
+              label: 'Vue Admin',
+              path: '/introduction'
+            }
+          ]
+        }
+      ]
+    },
+    components: {
+      title: '组件',
+      link: '/components/button',
+      menuOptions: [
+        {
+          name: 'components',
+          label: '通用组件',
+          type: 'group',
+          children: [
+            {
+              name: 'button',
+              label: '按钮',
+              path: '/button'
+            }
+          ]
+        },
+        {
+          name: 'my-components',
+          label: '我的组件',
+          type: 'group',
+          children: [
+            {
+              name: 'schema-form',
+              label: 'schema表单',
+              path: '/schema-form'
+            }
+          ]
+        }
+      ]
+    }
+  }
+})
+```
