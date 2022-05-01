@@ -1,3 +1,7 @@
 <template>
-  <div>Hello world!</div>
+  <SchemaForm />
 </template>
+
+<script setup>
+import SchemaForm from "./shared/components/schema-form/index.vue";
+</script>
