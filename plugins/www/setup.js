@@ -4,7 +4,8 @@ import './styles/demo.css';
 import 'vfonts/Inter.css';
 import 'vfonts/FiraCode.css';
 
-export function installDemoComponents(app) {
+export function initial(app) {
   app.component('ComponentDemo', ComponentDemo);
   app.component('ComponentDemos', ComponentDemos);
+  <!--INSTALL_COMPONENTS_SLOT-->
 }

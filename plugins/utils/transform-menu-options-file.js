@@ -1,5 +1,6 @@
 const fs = require('fs-extra');
 const nodePath = require('path');
+const slash = require('slash2');
 
 const ROOT_DIR = 'docs';
 const INDEX = 'index.md';
@@ -7,10 +8,10 @@ const INDEX_DEMO_ENTRY = 'index.demo-entry.md';
 const COMPONENTS = 'components';
 
 function getRelativePath(...paths) {
-  return nodePath.relative(
+  return slash(nodePath.relative(
     nodePath.join(__dirname, '../www/store/'),
     nodePath.join(...paths)
-  );
+  ));
 }
 
 module.exports = async function transformMenuOptionsFile(path, config) {

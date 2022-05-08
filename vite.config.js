@@ -7,6 +7,9 @@ module.exports = {
   root: __dirname,
   plugins: [
     webDocPlugin({
+      components: {
+        SchemaForm: 'src/shared/components/schema-form/index.vue',
+      },
       docs: {
         docs: {
           title: '文档',

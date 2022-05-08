@@ -1,8 +1,8 @@
 {
-  "name": "sew-ui",
+  "name": "vue-plugin-vue-web-docs",
   "private": true,
   "version": "0.0.0-beta.1",
-  "description": "这是一个究极缝合项目",
+  "description": "vue 可以使用的组件文档插件。",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vite",

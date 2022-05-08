@@ -5,5 +5,5 @@
 </markdown>
 
 <template>
-  <s-schema-form />
+  <SchemaForm />
 </template>
