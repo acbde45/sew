@@ -9,6 +9,7 @@ module.exports = {
     webDocPlugin({
       components: {
         SchemaForm: 'src/shared/components/schema-form/index.vue',
+        DragBox: 'src/shared/components/drag-box/index.vue',
       },
       docs: {
         docs: {
@@ -54,6 +55,11 @@ module.exports = {
                   name: 'schema-form',
                   label: 'schema表单',
                   path: '/schema-form'
+                },
+                {
+                  name: 'drag-box',
+                  label: '拖拽盒子',
+                  path: '/drag-box'
                 }
               ]
             }
