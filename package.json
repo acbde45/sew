@@ -1,8 +1,8 @@
 {
-  "name": "vue-plugin-vue-web-docs",
+  "name": "vite-docs",
   "private": true,
   "version": "0.0.0-beta.1",
-  "description": "vue 可以使用的组件文档插件。",
+  "description": "基于vite的vue项目文档管理工具",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vite",
