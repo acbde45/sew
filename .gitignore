@@ -4,6 +4,8 @@ dist
 
 # Lock file
 pnpm-lock.yaml
+yarn.lock
+package-lock.JSON
 
 # Logs
 logs
